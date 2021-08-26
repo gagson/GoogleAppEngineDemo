@@ -44,9 +44,10 @@ public class adminPage extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet adminPage</title>");
+            out.println("<title>Admin Page</title>");
             out.println("</head>");
             out.println("<body>");
+            out.println("<h1>Admin Page:</h1>");
             out.println("<h1>Add or delete a user here:</h1>");
             out.println("<form action=\"/addNewUser\" method=\"post\">\n"
                     + "            <label for=\"id\">ID:</label><br>\n"

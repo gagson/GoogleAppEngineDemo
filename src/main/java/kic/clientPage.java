@@ -35,13 +35,22 @@ public class clientPage extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet clientPage</title>");
+            out.println("<title>Client Page</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet clientPage at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Your Google cloud services:</h1>");
+            out.println("<h2>Google Cloud Storage:</h1>");
             out.println("<form action=\"storage_tester\" method=\"post\" enctype=\"multipart/form-data\">\n"
                     + "        <input type=\"file\" id=\"myFile\" name=\"file\">\n"
                     + "        <input type=\"submit\" value=\"Submit\">\n"
+                    + "    </form>");
+            out.println("<h2>Google Cloud Datastore:</h1>");
+            out.println("<a href='/submit_entity'>Create new entity here</a>");
+            out.println("<h2>Google Cloud Basic String Translation:</h1>");
+            out.println("<form action=\"translation\" method=\"post\">\n"
+                    + "<label for=\"string\">English string to be translated in Japanese:</label><br>\n"
+                    + "            <input type=\"text\" id=\"string\" name=\"string\"><br>\n"
+                    + "            <input type=\"submit\" value=\"Submit\">"
                     + "    </form>");
             out.println("</body>");
             out.println("</html>");

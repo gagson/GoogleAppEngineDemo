@@ -44,6 +44,10 @@
         <servlet-name>ReceiveEditUser</servlet-name>
         <servlet-class>kic.ReceiveEditUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Translation</servlet-name>
+        <servlet-class>kic.Translation</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserContents</servlet-name>
         <url-pattern>/user</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ReceiveEditUser</servlet-name>
         <url-pattern>/edit_user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Translation</servlet-name>
+        <url-pattern>/translation</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

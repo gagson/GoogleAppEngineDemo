@@ -5,27 +5,21 @@
  */
 package kic;
 
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.google.cloud.storage.BlobId;
-import com.google.cloud.storage.BlobInfo;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
-import java.io.InputStream;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.Part;
-import org.apache.commons.io.IOUtils;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author gagso
  */
-@MultipartConfig
-public class StorageTester extends HttpServlet {
+public class Translation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,23 +33,32 @@ public class StorageTester extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Storage storage
-                = StorageOptions.newBuilder().setProjectId("s002-kic-cc-2020").build().getService();
-        Part content = request.getPart("file");
-        InputStream filecontent = content.getInputStream();
-        BlobId blobId = BlobId.of("s002-kic-cc-2020.appspot.com", "test");
-        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
-        storage.create(blobInfo, IOUtils.toByteArray(filecontent));
+        HttpSession session = request.getSession();
+        String string = (String) request.getParameter("string");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet StorageTester</title>");
+            out.println("<title>Servlet Translation</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Your file have been uploaded.</h1>");
-            out.println("<h1>Servlet StorageTester at " + request.getContextPath() + "</h1>");
+            Translate translate = TranslateOptions.getDefaultInstance().getService();
+//
+//            Translation translation = translate.translate(string);
+//            out.println(translation.getTranslatedText());
+
+            com.google.cloud.translate.Translation translation1
+                    = translate.translate(
+                            string,
+                            Translate.TranslateOption.sourceLanguage("en"),
+                            Translate.TranslateOption.targetLanguage("ja"),
+                            // Use "base" for standard edition, "nmt" for the premium model.
+                            Translate.TranslateOption.model("nmt"));
+
+            out.println("<h1>The string \""+string+"\" in Japanese is:");
+            out.println("<p>"+translation1.getTranslatedText()+"</p>");
+            
             out.println("</body>");
             out.println("</html>");
         }

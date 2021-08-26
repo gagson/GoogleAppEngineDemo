@@ -93,7 +93,7 @@ public class SubmitEntity extends HttpServlet {
                     + "            </form>\n");
            
            
-            out.println("<button value=\"keyword\" name=\"keyword\" class=\"col-md-2 btn btn-light btn-block\"><a href=\"./submit_keyword\">Search Entity by a keyword</a></div>");
+//            out.println("<button value=\"keyword\" name=\"keyword\" class=\"col-md-2 btn btn-light btn-block\"><a href=\"./submit_keyword\">Search Entity by a keyword</a></div>");
             out.println("<h1>Servlet SubmitEntry at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");

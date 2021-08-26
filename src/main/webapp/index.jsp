@@ -7,6 +7,7 @@
     </head>
     <body>
         <h1>Google App Engine Test</h1>
+        <h5>Gagson Lee</h5>
         <form action="/login" method="post">
             <label for="name">Username:</label><br>
             <input type="text" id="name" name="name"><br>
@@ -22,9 +23,6 @@
             </tr>
             <tr>
                 <td><a href='/hello'>Hello App Engine</a></td>
-            </tr>
-            <tr>
-                <td><a href='/submit_entity'>Submit entity</a></td>
             </tr>
         </table>
 
